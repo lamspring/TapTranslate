@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="4dp"
+            android:text="翻译模式 · MVP\n\n1. 开启无障碍服务：设置 → 无障碍 → 已安装的服务 → 翻译模式\n2. 把手机调到完全静音（振动不算）\n3. 点击任何应用里的文字即可查词，点词位置上方出现悬浮小卡片\n\n关闭模式：取消静音即可"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="点词粒度"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/granularity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/granularity_word"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="词级（默认）" />
+
+            <RadioButton
+                android:id="@+id/granularity_phrase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="短语级" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="LLM 自费引擎（可选；留空则使用本地离线翻译）"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/endpoint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="API 地址，如 https://api.deepseek.com/v1/chat/completions"
+            android:inputType="textUri"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="模型名，如 deepseek-chat"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/api_key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="API Key（仅加密存储在本机，可补填后重新保存）"
+            android:inputType="textPassword"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/save_llm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="保存 LLM 配置" />
+
+        <TextView
+            android:id="@+id/llm_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="试用测试文本（静音后可直接点击下面英文查词）"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/demo_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="6dp"
+            android:text="The quick brown fox jumps over the lazy dog. English learning becomes effortless when every word on your screen is just one tap away. Practice reading every day, and the language will slowly become part of your life."
+            android:textColor="#222222"
+            android:textSize="18sp" />
+    </LinearLayout>
+</ScrollView>
