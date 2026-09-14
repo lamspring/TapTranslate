@@ -24,7 +24,7 @@
 #
 #   (1) You need a POSIX-compliant shell to run this script. If your /bin/sh is
 #       noncompliant, but you have some other compliant shell such as ksh or
-#       bash, then run this script, type that shell name before the whole
+#       bash, then to run this script, type that shell name before the whole
 #       command line, like:
 #
 #           ksh Gradle
@@ -33,7 +33,7 @@
 #       requires all of these POSIX shell features:
 #         * functions;
 #         * expansions «$var», «${var}», «${var:-default}», «${var+SET}»,
-#           «${var#prefix}», «${var%suffix}», and «$(cmd)»;
+#           «${var#prefix}», «${var%suffix}», and «$( cmd )»;
 #         * compound commands having a testable exit status, especially «case»;
 #         * various built-in commands including «command», «set», and «ulimit».
 #
@@ -47,9 +47,9 @@
 #       problems, so this is (mostly) avoided, by progressively accumulating
 #       options in "$@", and eventually passing that to Java.
 #
-#       Where the inherited environment variables (DEFAULT_JVM_OPTS,
-#       JAVA_OPTS, and GRADLE_OPTS) rely on word-splitting, this is performed
-#       explicitly; see the in-line comments for details.
+#       Where the inherited environment variables (DEFAULT_JVM_OPTS, JAVA_OPTS,
+#       and GRADLE_OPTS) rely on word-splitting, this is performed explicitly;
+#       see the in-line comments for details.
 #
 #       There are tweaks for specific operating systems such as AIX, CygWin,
 #       Darwin, MinGW, and NonStop.
@@ -108,7 +108,7 @@ nonstop=false
 case "$( uname )" in                #(
   CYGWIN* )         cygwin=true  ;; #(
   Darwin* )         darwin=true  ;; #(
-  MSYS* | MINGW* )  msys=true  ;; #(
+  MSYS* | MINGW* )  msys=true    ;; #(
   NONSTOP* )        nonstop=true ;;
 esac
 
@@ -126,8 +126,8 @@ if [ -n "$JAVA_HOME" ] ; then
     if [ ! -x "$JAVACMD" ] ; then
         die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
 
-Please set the JAVA_HOME variable in your environment to match your
-Java installation."
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
     fi
 else
     JAVACMD=java
@@ -135,28 +135,28 @@ else
     then
         die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
 
-Please set the JAVA_HOME variable in your environment to match your
-Java installation."
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
     fi
 fi
 
 # Increase the maximum file descriptors if we can.
 if ! "$cygwin" && ! "$darwin" && ! "$nonstop" ; then
-  case $MAX_FD in #(
-    max*)
-      # In POSIX sh, ulimit -H is undefined. That's why the result is checked to see if it worked.
-      # shellcheck disable=SC2039,SC3045
-      MAX_FD=$( ulimit -H -n ) ||
-        warn "Could not query maximum file descriptor limit"
-  esac
-  case $MAX_FD in  #(
-    '' | soft) :;; #(
-    *)
-      # In POSIX sh, ulimit -n is undefined. That's why the result is checked to see if it worked.
-      # shellcheck disable=SC2039,SC3045
-      ulimit -n "$MAX_FD" ||
-        warn "Could not set maximum file descriptor limit to $MAX_FD"
-  esac
+    case $MAX_FD in #(
+      max*)
+        # In POSIX sh, ulimit -H is undefined. That's why the result is checked to see if it worked.
+        # shellcheck disable=SC2039,SC3045
+        MAX_FD=$( ulimit -H -n ) ||
+            warn "Could not query maximum file descriptor limit"
+    esac
+    case $MAX_FD in  #(
+      '' | soft) :;; #(
+      *)
+        # In POSIX sh, ulimit -n is undefined. That's why the result is checked to see if it worked.
+        # shellcheck disable=SC2039,SC3045
+        ulimit -n "$MAX_FD" ||
+            warn "Could not set maximum file descriptor limit to $MAX_FD"
+    esac
 fi
 
 # Collect all arguments for the java command, stacking in reverse order:
@@ -205,8 +205,8 @@ DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
 # Collect all arguments for the java command:
 #   * DEFAULT_JVM_OPTS, JAVA_OPTS, JAVA_OPTS, and optsEnvironmentVar are not allowed to contain shell fragments,
 #     and any embedded shellness will be escaped.
-#   * For example: A user cannot expect ${Hostname} to be expanded, as it's an environment variable
-#     and will be treated as '${Hostname}' itself on the command line.
+#   * For example: A user cannot expect ${Hostname} to be expanded, as it is an environment variable and will be
+#     treated as '${Hostname}' itself on the command line.
 
 set -- \
         "-Dorg.gradle.appname=$APP_BASE_NAME" \
